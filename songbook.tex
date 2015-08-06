@@ -1,0 +1,50 @@
+% Create PDF from terminal with write18 enabled, to be able to execute shell scripts:
+% $ xelatex -enable-write18 library.tex
+
+\documentclass{article}
+
+\usepackage{geometry}
+\geometry{
+  a4paper,
+  total={210mm,297mm},
+  left=20mm,
+  right=20mm,
+  top=20mm,
+  bottom=20mm,
+}
+ 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\textit{\leftmark}}
+\fancyhead[LO]{\textit{\rightmark}}
+
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks,
+  citecolor=black,
+  filecolor=black,
+  linkcolor=black,
+  urlcolor=black
+}
+
+\usepackage{fancyvrb}
+
+\usepackage[titles]{tocloft}
+\setlength{\cftbeforesecskip}{-.1ex}
+
+\immediate\write18{./generate.sh > temptabs.tex}
+
+\begin{document}
+
+\large
+
+\tableofcontents
+\clearpage
+
+\input{temptabs.tex}
+
+\immediate\write18{rm ./temptabs.tex}
+
+\end{document}
