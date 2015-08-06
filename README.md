@@ -6,4 +6,4 @@ This is a first rudimentary version, but sufficient for now. The PDF has an inde
 
 ## How to generate your PDF?
 - Configure the path to your txt files in generate.sh
-- Run songbook.tex from terminal with write18 enabled, to be able to execute shell scripts: $ xelatex -enable-write18 songbook.tex
+- Run songbook.tex from terminal with write18 enabled, to be able to execute shell scripts: `$ xelatex -enable-write18 songbook.tex`
