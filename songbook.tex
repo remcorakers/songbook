@@ -12,7 +12,7 @@
   top=20mm,
   bottom=20mm,
 }
- 
+
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
@@ -34,7 +34,7 @@
 \usepackage[titles]{tocloft}
 \setlength{\cftbeforesecskip}{-.1ex}
 
-\immediate\write18{./generate.sh > temptabs.tex}
+\immediate\write18{./generate.sh TABDIR > tabs.temp.tex}
 
 \begin{document}
 
@@ -43,8 +43,8 @@
 \tableofcontents
 \clearpage
 
-\input{temptabs.tex}
+\input{tabs.temp.tex}
 
-\immediate\write18{rm ./temptabs.tex}
+\immediate\write18{rm ./tabs.temp.tex}
 
 \end{document}
