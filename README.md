@@ -6,17 +6,15 @@ This is a first rudimentary version, but sufficient for now. The PDF has an inde
 
 ## Prerequisites
 
-- `xelatex` should be installed (see [XeTeX's Wikipedia page](https://en.wikipedia.org/wiki/XeTeX) for more info)
-- Script needs read/write permission in the current folder
-- Files in the target directory are stored as `.txt` files
-- Tested and developed on OSX, but should be possible to make it work on other platforms without much effort.
+- Docker
+- Files in the tabs directory are stored as `.txt` files
 
 ## How to generate your PDF?
 
-Run the following command from the directory containing this repo code:
+Run the following command from the directory containing this repo code, where you replace `/path/to/your/tabs/directory` with the actual value of the path on your system:
 
 ```Shell
-$ bash ./songbook.sh /path/to/tab/directory
+$ docker run -w /src -v $(pwd):/src -v /path/to/your/tabs/directory:/tabs moss/xelatex bash /src/songbook.sh /tabs
 ```
 
-This will create a file named `songbook.pdf` containing all the `.txt` files from the provided directory.
+This will create a file named `songbook.pdf` in the `./output` directory, containing all the `.txt` files from the provided directory with tabs.

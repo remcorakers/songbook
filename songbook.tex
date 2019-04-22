@@ -6,9 +6,8 @@
 \usepackage{geometry}
 \geometry{
   a4paper,
-  total={210mm,297mm},
-  left=20mm,
-  right=20mm,
+  left=10mm,
+  right=10mm,
   top=20mm,
   bottom=20mm,
 }
@@ -16,9 +15,8 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE,RO]{\thepage}
-\fancyhead[RE]{\textit{\leftmark}}
-\fancyhead[LO]{\textit{\rightmark}}
+\fancyhead[R]{\thepage}
+\fancyhead[L]{\textit{\rightmark}}
 
 \usepackage{hyperref}
 \hypersetup{
@@ -34,7 +32,7 @@
 \usepackage[titles]{tocloft}
 \setlength{\cftbeforesecskip}{-.1ex}
 
-\immediate\write18{./generate.sh TABDIR > tabs.temp.tex}
+\immediate\write18{./generate.sh TABDIR > ./output/tabs.temp.tex}
 
 \begin{document}
 
@@ -43,8 +41,8 @@
 \tableofcontents
 \clearpage
 
-\input{tabs.temp.tex}
+\input{./output/tabs.temp.tex}
 
-\immediate\write18{rm ./tabs.temp.tex}
+\immediate\write18{rm ./output/tabs.temp.tex}
 
 \end{document}
